@@ -1,0 +1,24 @@
+spring:
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+    serialization:
+      INDENT_OUTPUT: true
+  profiles.active: development
+---
+task:
+  profiles: development
+  providers:
+    - name: provider1
+      url: http://localhost:8081/provider1.com/v1/api/account/validate
+    - name: provider2
+      url: http://localhost:8081/provider2.com/v2/api/account/validate
+
+---
+      task:
+        profiles: production
+        providers:
+          - name: provider1
+            url: http://localhost:8081/provider1.com/v1/api/account/validate
+          - name: provider2
+            url: http://localhost:8081/provider2.com/v2/api/account/validate
